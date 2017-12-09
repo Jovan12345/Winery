@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "TipVinoTitle";
+}
+<html>
+<head>
+    <title>
+        Tipovi
+    </title>
+</head>
+<body>
+    <a href="/Home/Index" class="btn btn-default">Home</a>
+    <table style="100%">
+        <tr>
+            <td>
+                @foreach (var obj in Model)
+                {<ul><li>@obj</li></ul>}
+            </td>
+
+        </tr>
+    </table>
+</body>
+</html>
+
+

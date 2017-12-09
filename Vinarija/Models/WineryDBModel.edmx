@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WineryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="KolicinaVino">
+          <Key>
+            <PropertyRef Name="KolicinaVinoID" />
+          </Key>
+          <Property Name="KolicinaVinoID" Type="int" Nullable="false" />
+          <Property Name="VinoID" Type="int" />
+          <Property Name="Kolicina" Type="int" />
+        </EntityType>
+        <EntityType Name="Kupuvac">
+          <Key>
+            <PropertyRef Name="KupuvacID" />
+          </Key>
+          <Property Name="KupuvacID" Type="int" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="20" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="20" />
+          <Property Name="email" Type="nvarchar" MaxLength="20" />
+          <Property Name="adresa" Type="nvarchar" MaxLength="20" />
+          <Property Name="Godini" Type="int" />
+          <Property Name="tel" Type="int" />
+        </EntityType>
+        <EntityType Name="Naracka">
+          <Key>
+            <PropertyRef Name="NarackaID" />
+          </Key>
+          <Property Name="NarackaID" Type="int" Nullable="false" />
+          <Property Name="KupuvacID" Type="int" />
+          <Property Name="VinoID" Type="int" />
+        </EntityType>
+        <EntityType Name="ProizvoditelVino">
+          <Key>
+            <PropertyRef Name="ProizvoditelVinoID" />
+          </Key>
+          <Property Name="ProizvoditelVinoID" Type="int" Nullable="false" />
+          <Property Name="ProizvoditelVinoIme" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SostojkiVino">
+          <Key>
+            <PropertyRef Name="SostojkiVinoID" />
+          </Key>
+          <Property Name="SostojkiVinoID" Type="int" Nullable="false" />
+          <Property Name="VinoID" Type="int" />
+          <Property Name="Grozje" Type="nvarchar" MaxLength="20" />
+          <Property Name="Voda" Type="nvarchar" MaxLength="20" />
+          <Property Name="Seker" Type="nvarchar" MaxLength="20" />
+          <Property Name="Ostanato" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TipVino">
+          <Key>
+            <PropertyRef Name="TipVinoID" />
+          </Key>
+          <Property Name="TipVinoID" Type="int" Nullable="false" />
+          <Property Name="TipVino" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Vino">
+          <Key>
+            <PropertyRef Name="VinoID" />
+          </Key>
+          <Property Name="ImeVino" Type="nvarchar" MaxLength="20" />
+          <Property Name="VinoID" Type="int" Nullable="false" />
+          <Property Name="TipVinoID" Type="int" />
+          <Property Name="ProizvoditelVinoID" Type="int" />
+          <Property Name="GodinaProizvdostvo" Type="int" />
+          <Property Name="Cena" Type="int" />
+        </EntityType>
+        <Association Name="FK_KolicinaVino_Vino">
+          <End Role="Vino" Type="Self.Vino" Multiplicity="0..1" />
+          <End Role="KolicinaVino" Type="Self.KolicinaVino" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vino">
+              <PropertyRef Name="VinoID" />
+            </Principal>
+            <Dependent Role="KolicinaVino">
+              <PropertyRef Name="VinoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naracka_Kupuvac">
+          <End Role="Kupuvac" Type="Self.Kupuvac" Multiplicity="0..1" />
+          <End Role="Naracka" Type="Self.Naracka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupuvac">
+              <PropertyRef Name="KupuvacID" />
+            </Principal>
+            <Dependent Role="Naracka">
+              <PropertyRef Name="KupuvacID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naracka_Vino">
+          <End Role="Vino" Type="Self.Vino" Multiplicity="0..1" />
+          <End Role="Naracka" Type="Self.Naracka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vino">
+              <PropertyRef Name="VinoID" />
+            </Principal>
+            <Dependent Role="Naracka">
+              <PropertyRef Name="VinoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SostojkiVino_Vino">
+          <End Role="Vino" Type="Self.Vino" Multiplicity="0..1" />
+          <End Role="SostojkiVino" Type="Self.SostojkiVino" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vino">
+              <PropertyRef Name="VinoID" />
+            </Principal>
+            <Dependent Role="SostojkiVino">
+              <PropertyRef Name="VinoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vino_ProizvoditelVino">
+          <End Role="ProizvoditelVino" Type="Self.ProizvoditelVino" Multiplicity="0..1" />
+          <End Role="Vino" Type="Self.Vino" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProizvoditelVino">
+              <PropertyRef Name="ProizvoditelVinoID" />
+            </Principal>
+            <Dependent Role="Vino">
+              <PropertyRef Name="ProizvoditelVinoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vino_TipVino">
+          <End Role="TipVino" Type="Self.TipVino" Multiplicity="0..1" />
+          <End Role="Vino" Type="Self.Vino" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipVino">
+              <PropertyRef Name="TipVinoID" />
+            </Principal>
+            <Dependent Role="Vino">
+              <PropertyRef Name="TipVinoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WineryDBModelStoreContainer">
+          <EntitySet Name="KolicinaVino" EntityType="Self.KolicinaVino" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kupuvac" EntityType="Self.Kupuvac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Naracka" EntityType="Self.Naracka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProizvoditelVino" EntityType="Self.ProizvoditelVino" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SostojkiVino" EntityType="Self.SostojkiVino" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipVino" EntityType="Self.TipVino" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vino" EntityType="Self.Vino" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_KolicinaVino_Vino" Association="Self.FK_KolicinaVino_Vino">
+            <End Role="Vino" EntitySet="Vino" />
+            <End Role="KolicinaVino" EntitySet="KolicinaVino" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naracka_Kupuvac" Association="Self.FK_Naracka_Kupuvac">
+            <End Role="Kupuvac" EntitySet="Kupuvac" />
+            <End Role="Naracka" EntitySet="Naracka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naracka_Vino" Association="Self.FK_Naracka_Vino">
+            <End Role="Vino" EntitySet="Vino" />
+            <End Role="Naracka" EntitySet="Naracka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SostojkiVino_Vino" Association="Self.FK_SostojkiVino_Vino">
+            <End Role="Vino" EntitySet="Vino" />
+            <End Role="SostojkiVino" EntitySet="SostojkiVino" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vino_ProizvoditelVino" Association="Self.FK_Vino_ProizvoditelVino">
+            <End Role="ProizvoditelVino" EntitySet="ProizvoditelVino" />
+            <End Role="Vino" EntitySet="Vino" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vino_TipVino" Association="Self.FK_Vino_TipVino">
+            <End Role="TipVino" EntitySet="TipVino" />
+            <End Role="Vino" EntitySet="Vino" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WineryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="KolicinaVino">
+          <Key>
+            <PropertyRef Name="KolicinaVinoID" />
+          </Key>
+          <Property Name="KolicinaVinoID" Type="Int32" Nullable="false" />
+          <Property Name="VinoID" Type="Int32" />
+          <Property Name="Kolicina" Type="Int32" />
+          <NavigationProperty Name="Vino" Relationship="Self.FK_KolicinaVino_Vino" FromRole="KolicinaVino" ToRole="Vino" />
+        </EntityType>
+        <EntityType Name="Kupuvac">
+          <Key>
+            <PropertyRef Name="KupuvacID" />
+          </Key>
+          <Property Name="KupuvacID" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="adresa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Godini" Type="Int32" />
+          <Property Name="tel" Type="Int32" />
+          <NavigationProperty Name="Narackas" Relationship="Self.FK_Naracka_Kupuvac" FromRole="Kupuvac" ToRole="Naracka" />
+        </EntityType>
+        <EntityType Name="Naracka">
+          <Key>
+            <PropertyRef Name="NarackaID" />
+          </Key>
+          <Property Name="NarackaID" Type="Int32" Nullable="false" />
+          <Property Name="KupuvacID" Type="Int32" />
+          <Property Name="VinoID" Type="Int32" />
+          <NavigationProperty Name="Kupuvac" Relationship="Self.FK_Naracka_Kupuvac" FromRole="Naracka" ToRole="Kupuvac" />
+          <NavigationProperty Name="Vino" Relationship="Self.FK_Naracka_Vino" FromRole="Naracka" ToRole="Vino" />
+        </EntityType>
+        <EntityType Name="ProizvoditelVino">
+          <Key>
+            <PropertyRef Name="ProizvoditelVinoID" />
+          </Key>
+          <Property Name="ProizvoditelVinoID" Type="Int32" Nullable="false" />
+          <Property Name="ProizvoditelVinoIme" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Vinoes" Relationship="Self.FK_Vino_ProizvoditelVino" FromRole="ProizvoditelVino" ToRole="Vino" />
+        </EntityType>
+        <EntityType Name="SostojkiVino">
+          <Key>
+            <PropertyRef Name="SostojkiVinoID" />
+          </Key>
+          <Property Name="SostojkiVinoID" Type="Int32" Nullable="false" />
+          <Property Name="VinoID" Type="Int32" />
+          <Property Name="Grozje" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Voda" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Seker" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Ostanato" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Vino" Relationship="Self.FK_SostojkiVino_Vino" FromRole="SostojkiVino" ToRole="Vino" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TipVino">
+          <Key>
+            <PropertyRef Name="TipVinoID" />
+          </Key>
+          <Property Name="TipVinoID" Type="Int32" Nullable="false" />
+          <Property Name="TipVino1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Vinoes" Relationship="Self.FK_Vino_TipVino" FromRole="TipVino" ToRole="Vino" />
+        </EntityType>
+        <EntityType Name="Vino">
+          <Key>
+            <PropertyRef Name="VinoID" />
+          </Key>
+          <Property Name="ImeVino" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VinoID" Type="Int32" Nullable="false" />
+          <Property Name="TipVinoID" Type="Int32" />
+          <Property Name="ProizvoditelVinoID" Type="Int32" />
+          <Property Name="GodinaProizvdostvo" Type="Int32" />
+          <Property Name="Cena" Type="Int32" />
+          <NavigationProperty Name="KolicinaVinoes" Relationship="Self.FK_KolicinaVino_Vino" FromRole="Vino" ToRole="KolicinaVino" />
+          <NavigationProperty Name="Narackas" Relationship="Self.FK_Naracka_Vino" FromRole="Vino" ToRole="Naracka" />
+          <NavigationProperty Name="ProizvoditelVino" Relationship="Self.FK_Vino_ProizvoditelVino" FromRole="Vino" ToRole="ProizvoditelVino" />
+          <NavigationProperty Name="SostojkiVinoes" Relationship="Self.FK_SostojkiVino_Vino" FromRole="Vino" ToRole="SostojkiVino" />
+          <NavigationProperty Name="TipVino" Relationship="Self.FK_Vino_TipVino" FromRole="Vino" ToRole="TipVino" />
+        </EntityType>
+        <Association Name="FK_KolicinaVino_Vino">
+          <End Role="Vino" Type="Self.Vino" Multiplicity="0..1" />
+          <End Role="KolicinaVino" Type="Self.KolicinaVino" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vino">
+              <PropertyRef Name="VinoID" />
+            </Principal>
+            <Dependent Role="KolicinaVino">
+              <PropertyRef Name="VinoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naracka_Kupuvac">
+          <End Role="Kupuvac" Type="Self.Kupuvac" Multiplicity="0..1" />
+          <End Role="Naracka" Type="Self.Naracka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupuvac">
+              <PropertyRef Name="KupuvacID" />
+            </Principal>
+            <Dependent Role="Naracka">
+              <PropertyRef Name="KupuvacID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naracka_Vino">
+          <End Role="Vino" Type="Self.Vino" Multiplicity="0..1" />
+          <End Role="Naracka" Type="Self.Naracka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vino">
+              <PropertyRef Name="VinoID" />
+            </Principal>
+            <Dependent Role="Naracka">
+              <PropertyRef Name="VinoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vino_ProizvoditelVino">
+          <End Role="ProizvoditelVino" Type="Self.ProizvoditelVino" Multiplicity="0..1" />
+          <End Role="Vino" Type="Self.Vino" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProizvoditelVino">
+              <PropertyRef Name="ProizvoditelVinoID" />
+            </Principal>
+            <Dependent Role="Vino">
+              <PropertyRef Name="ProizvoditelVinoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SostojkiVino_Vino">
+          <End Role="Vino" Type="Self.Vino" Multiplicity="0..1" />
+          <End Role="SostojkiVino" Type="Self.SostojkiVino" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vino">
+              <PropertyRef Name="VinoID" />
+            </Principal>
+            <Dependent Role="SostojkiVino">
+              <PropertyRef Name="VinoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vino_TipVino">
+          <End Role="TipVino" Type="Self.TipVino" Multiplicity="0..1" />
+          <End Role="Vino" Type="Self.Vino" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipVino">
+              <PropertyRef Name="TipVinoID" />
+            </Principal>
+            <Dependent Role="Vino">
+              <PropertyRef Name="TipVinoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WineryDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="KolicinaVinoes" EntityType="Self.KolicinaVino" />
+          <EntitySet Name="Kupuvacs" EntityType="Self.Kupuvac" />
+          <EntitySet Name="Narackas" EntityType="Self.Naracka" />
+          <EntitySet Name="ProizvoditelVinoes" EntityType="Self.ProizvoditelVino" />
+          <EntitySet Name="SostojkiVinoes" EntityType="Self.SostojkiVino" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TipVinoes" EntityType="Self.TipVino" />
+          <EntitySet Name="Vinoes" EntityType="Self.Vino" />
+          <AssociationSet Name="FK_KolicinaVino_Vino" Association="Self.FK_KolicinaVino_Vino">
+            <End Role="Vino" EntitySet="Vinoes" />
+            <End Role="KolicinaVino" EntitySet="KolicinaVinoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naracka_Kupuvac" Association="Self.FK_Naracka_Kupuvac">
+            <End Role="Kupuvac" EntitySet="Kupuvacs" />
+            <End Role="Naracka" EntitySet="Narackas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naracka_Vino" Association="Self.FK_Naracka_Vino">
+            <End Role="Vino" EntitySet="Vinoes" />
+            <End Role="Naracka" EntitySet="Narackas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vino_ProizvoditelVino" Association="Self.FK_Vino_ProizvoditelVino">
+            <End Role="ProizvoditelVino" EntitySet="ProizvoditelVinoes" />
+            <End Role="Vino" EntitySet="Vinoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SostojkiVino_Vino" Association="Self.FK_SostojkiVino_Vino">
+            <End Role="Vino" EntitySet="Vinoes" />
+            <End Role="SostojkiVino" EntitySet="SostojkiVinoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vino_TipVino" Association="Self.FK_Vino_TipVino">
+            <End Role="TipVino" EntitySet="TipVinoes" />
+            <End Role="Vino" EntitySet="Vinoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WineryDBModelStoreContainer" CdmEntityContainer="WineryDBEntities">
+          <EntitySetMapping Name="KolicinaVinoes">
+            <EntityTypeMapping TypeName="WineryDBModel.KolicinaVino">
+              <MappingFragment StoreEntitySet="KolicinaVino">
+                <ScalarProperty Name="KolicinaVinoID" ColumnName="KolicinaVinoID" />
+                <ScalarProperty Name="VinoID" ColumnName="VinoID" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kupuvacs">
+            <EntityTypeMapping TypeName="WineryDBModel.Kupuvac">
+              <MappingFragment StoreEntitySet="Kupuvac">
+                <ScalarProperty Name="KupuvacID" ColumnName="KupuvacID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+                <ScalarProperty Name="Godini" ColumnName="Godini" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Narackas">
+            <EntityTypeMapping TypeName="WineryDBModel.Naracka">
+              <MappingFragment StoreEntitySet="Naracka">
+                <ScalarProperty Name="NarackaID" ColumnName="NarackaID" />
+                <ScalarProperty Name="KupuvacID" ColumnName="KupuvacID" />
+                <ScalarProperty Name="VinoID" ColumnName="VinoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProizvoditelVinoes">
+            <EntityTypeMapping TypeName="WineryDBModel.ProizvoditelVino">
+              <MappingFragment StoreEntitySet="ProizvoditelVino">
+                <ScalarProperty Name="ProizvoditelVinoID" ColumnName="ProizvoditelVinoID" />
+                <ScalarProperty Name="ProizvoditelVinoIme" ColumnName="ProizvoditelVinoIme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SostojkiVinoes">
+            <EntityTypeMapping TypeName="WineryDBModel.SostojkiVino">
+              <MappingFragment StoreEntitySet="SostojkiVino">
+                <ScalarProperty Name="SostojkiVinoID" ColumnName="SostojkiVinoID" />
+                <ScalarProperty Name="VinoID" ColumnName="VinoID" />
+                <ScalarProperty Name="Grozje" ColumnName="Grozje" />
+                <ScalarProperty Name="Voda" ColumnName="Voda" />
+                <ScalarProperty Name="Seker" ColumnName="Seker" />
+                <ScalarProperty Name="Ostanato" ColumnName="Ostanato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WineryDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipVinoes">
+            <EntityTypeMapping TypeName="WineryDBModel.TipVino">
+              <MappingFragment StoreEntitySet="TipVino">
+                <ScalarProperty Name="TipVinoID" ColumnName="TipVinoID" />
+                <ScalarProperty Name="TipVino1" ColumnName="TipVino" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vinoes">
+            <EntityTypeMapping TypeName="WineryDBModel.Vino">
+              <MappingFragment StoreEntitySet="Vino">
+                <ScalarProperty Name="ImeVino" ColumnName="ImeVino" />
+                <ScalarProperty Name="VinoID" ColumnName="VinoID" />
+                <ScalarProperty Name="TipVinoID" ColumnName="TipVinoID" />
+                <ScalarProperty Name="ProizvoditelVinoID" ColumnName="ProizvoditelVinoID" />
+                <ScalarProperty Name="GodinaProizvdostvo" ColumnName="GodinaProizvdostvo" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

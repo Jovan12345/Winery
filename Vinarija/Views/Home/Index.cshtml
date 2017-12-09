@@ -1,0 +1,29 @@
+﻿<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+    <a href="/Proizvoditeli/ProzivoditelAction" class="btn btn-default">Prozivoditeli</a>
+    <a href="/TipVino/TipAction" class="btn btn-default">Tip Vino</a>
+    <a href="/Sostojki/Index" class="btn btn-default">Vino Sostojki</a>
+    <a href="/Kolicina/KolicinaAction" class="btn btn-default">Vino Kolicina</a>
+    <a href="/Vino/VinoAction" class="btn btn-default">Vino</a>
+    <div>
+        <table>
+            <tr>
+                <th>Ime Vino</th>
+                <th>Cena</th>
+            </tr>
+            @foreach (var w in ViewData.Model)
+            {
+                <tr>
+                    <td>@w.ImeVino;</td>
+                    <td> @w.Cena;</td>
+                </tr>
+            }
+
+
+        </table>
+    </div>
+</body>
+</html>

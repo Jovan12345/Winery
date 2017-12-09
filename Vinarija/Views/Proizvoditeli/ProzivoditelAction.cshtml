@@ -1,0 +1,19 @@
+﻿<html>
+<head>
+    <title>Prozivoditeli</title>
+
+</head>
+<body>
+    <a href="/Home/Index" class="btn btn-default">Home</a>
+    <h3>Proizvoditeli na vino:</h3>
+    @foreach (var item in ViewData.Model)
+    {
+
+        <ul>
+            <li>@item.ProizvoditelVinoIme;</li>
+        </ul>
+
+
+    }
+</body>
+</html>

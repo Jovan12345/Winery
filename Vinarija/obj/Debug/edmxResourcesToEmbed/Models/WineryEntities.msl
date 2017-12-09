@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WineryModelStoreContainer" CdmEntityContainer="wineryEntities">
+    <EntitySetMapping Name="KolicinaVinoes">
+      <EntityTypeMapping TypeName="WineryModel.KolicinaVino">
+        <MappingFragment StoreEntitySet="KolicinaVino">
+          <ScalarProperty Name="KolicinaVinoID" ColumnName="KolicinaVinoID" />
+          <ScalarProperty Name="VinoID" ColumnName="VinoID" />
+          <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kupuvacs">
+      <EntityTypeMapping TypeName="WineryModel.Kupuvac">
+        <MappingFragment StoreEntitySet="Kupuvac">
+          <ScalarProperty Name="KupuvacID" ColumnName="KupuvacID" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="adresa" ColumnName="adresa" />
+          <ScalarProperty Name="Godini" ColumnName="Godini" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Narackas">
+      <EntityTypeMapping TypeName="WineryModel.Naracka">
+        <MappingFragment StoreEntitySet="Naracka">
+          <ScalarProperty Name="NarackaID" ColumnName="NarackaID" />
+          <ScalarProperty Name="KupuvacID" ColumnName="KupuvacID" />
+          <ScalarProperty Name="VinoID" ColumnName="VinoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProizvoditelVinoes">
+      <EntityTypeMapping TypeName="WineryModel.ProizvoditelVino">
+        <MappingFragment StoreEntitySet="ProizvoditelVino">
+          <ScalarProperty Name="ProizvoditelVinoID" ColumnName="ProizvoditelVinoID" />
+          <ScalarProperty Name="ProizvoditelVinoIme" ColumnName="ProizvoditelVinoIme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SostojkiVinoes">
+      <EntityTypeMapping TypeName="WineryModel.SostojkiVino">
+        <MappingFragment StoreEntitySet="SostojkiVino">
+          <ScalarProperty Name="SostojkiVinoID" ColumnName="SostojkiVinoID" />
+          <ScalarProperty Name="VinoID" ColumnName="VinoID" />
+          <ScalarProperty Name="Grozje" ColumnName="Grozje" />
+          <ScalarProperty Name="Voda" ColumnName="Voda" />
+          <ScalarProperty Name="Seker" ColumnName="Seker" />
+          <ScalarProperty Name="Ostanato" ColumnName="Ostanato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="WineryModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipVinoes">
+      <EntityTypeMapping TypeName="WineryModel.TipVino">
+        <MappingFragment StoreEntitySet="TipVino">
+          <ScalarProperty Name="TipVinoID" ColumnName="TipVinoID" />
+          <ScalarProperty Name="TipVino1" ColumnName="TipVino" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vinoes">
+      <EntityTypeMapping TypeName="WineryModel.Vino">
+        <MappingFragment StoreEntitySet="Vino">
+          <ScalarProperty Name="ImeVino" ColumnName="ImeVino" />
+          <ScalarProperty Name="VinoID" ColumnName="VinoID" />
+          <ScalarProperty Name="TipVinoID" ColumnName="TipVinoID" />
+          <ScalarProperty Name="ProizvoditelVinoID" ColumnName="ProizvoditelVinoID" />
+          <ScalarProperty Name="GodinaProizvdostvo" ColumnName="GodinaProizvdostvo" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

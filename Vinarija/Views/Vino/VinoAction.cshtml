@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Vino Title";
+}
+<html>
+<head>
+    <title>
+        Vino
+    </title>
+</head>
+<body>
+    <a href="/Home/Index" class="btn btn-default">Home</a>
+    <table style="100%">
+
+        <tr>
+            <th>Ime Vino</th>
+            <th>Tip Vino</th>
+            <th>Prozivoditel Vino</th>
+            <th>Godina Prozivodstvo</th>
+            <th>Cena</th>
+        </tr>
+
+        @foreach (var obj in ViewData.Model)
+        {
+            <tr>
+                <td>
+
+                    <ul><li>@obj.ImeVino</li></ul>
+                </td>
+                <td>
+                    <ul><li>@obj.TipVino.TipVino1</li></ul>
+                </td>
+                <td>
+
+                    <ul><li>@obj.ProizvoditelVino.ProizvoditelVinoIme</li></ul>
+                </td>
+                <td>
+                    <ul><li>@obj.GodinaProizvdostvo</li></ul>
+                </td>
+                <td>
+                    <ul><li>@obj.Cena</li></ul>
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
+
+
