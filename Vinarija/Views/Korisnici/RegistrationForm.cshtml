@@ -1,0 +1,38 @@
+﻿@model Vinarija.Models.Kupuvac
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegistrationForm</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <p>
+            Your name: @Html.TextBoxFor(x => x.Ime)
+        </p>
+        <p>
+            Your surename: @Html.TextBoxFor(x => x.Prezime)
+        </p>
+        <p>
+            Your email: @Html.TextBoxFor(x => x.email)
+        </p>
+        <p>
+            Your adresa: @Html.TextBoxFor(x => x.adresa)
+        </p>
+        <p>
+            Your phoneNumber: @Html.TextBoxFor(x => x.tel)
+        </p>
+        <p>
+            Your age: @Html.TextBoxFor(x => x.Godini)
+        </p>
+        <input type="submit" value="Register Me" />
+    }
+</body>
+</html>

@@ -1,15 +1,19 @@
 ﻿@{
     ViewBag.Title = "SostojkiTitle";
 }
+
 <html>
 <head>
     <title>
         Sostojki
     </title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
     <a href="/Home/Index" class="btn btn-default">Home</a>
-    <table style="100%">
+    <table id="ecample">
 
         <tr>
             <th>Tip Vino</th>
@@ -43,6 +47,14 @@
         }
 
     </table>
+    <button>Nesto</button>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("button").hide();
+            });
+        });
+    </script>
 </body>
 </html>
 

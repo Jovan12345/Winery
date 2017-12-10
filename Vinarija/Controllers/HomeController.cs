@@ -38,6 +38,13 @@ namespace Vinarija.Controllers
 
             return View();
         }
-       
+        public ActionResult VinoActionTikves()
+        {
+         ViewData.Model = wEntities.Vinoes.ToList();
+                           var obj = (from b in wEntities.Vinoes
+                            select b);
+            return View();
+        }
+
     }
 }

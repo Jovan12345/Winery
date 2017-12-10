@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Vino Tikves";
+}
+<html>
+<head>
+    <title>
+        Vino Tikves
+    </title>
+</head>
+<body>
+    <a href="/Home/Index" class="btn btn-default">Home</a>
+    <div class="row">
+        @foreach (var obj in ViewData.Model)
+        {
+            if (obj.ProizvoditelVino.ProizvoditelVinoIme == "Bovin")
+            {
+
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <a href="/Proizvoditeli/ProzivoditelAction">
+                            @if (@obj.ImeVino == "Bovin Crveno")
+                            {
+                                <img src="~/Content/pictures/redWine.png" alt="Bovin Red" width="200px" height="200px" />
+                            }
+                            else if (@obj.ImeVino == "Bovin Crno")
+                            {
+                                <img src="~/Content/pictures/blackWine.png" alt="Bovin Black" width="200px" height="200px" />
+                            }
+                            <div class="caption">
+                                <p>@obj.ImeVino</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            }
+        }
+    </div>
+</body>
+</html>
+
+
+
+

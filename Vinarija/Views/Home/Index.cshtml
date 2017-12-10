@@ -3,12 +3,59 @@
     <title>Index</title>
 </head>
 <body>
-    <a href="/Proizvoditeli/ProzivoditelAction" class="btn btn-default">Prozivoditeli</a>
-    <a href="/TipVino/TipAction" class="btn btn-default">Tip Vino</a>
-    <a href="/Sostojki/Index" class="btn btn-default">Vino Sostojki</a>
-    <a href="/Kolicina/KolicinaAction" class="btn btn-default">Vino Kolicina</a>
-    <a href="/Vino/VinoAction" class="btn btn-default">Vino</a>
-    <div>
+    <div class="container">
+        <h2>Wines</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <a href="/Proizvoditeli/ProzivoditelAction">
+                        <img src="~/Content/pictures/tikves.jpg" alt="Tikves" width="200px" height="200px" />
+                        <div class="caption">
+                            <p>Tikves winery.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <a href="/Proizvoditeli/ProzivoditelAction">
+                        <img src="~/Content/pictures/Dalvina.jpg" alt="Dalvina" width="200px" height="200px" />
+                        <div class="caption">
+                            <p>Dalvina  wines.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <a href="/Proizvoditeli/ProzivoditelAction">
+                        <img src="~/Content/pictures/stobi.jpg" alt="Stobi" width="200px" height="200px" />
+                        <div class="caption">
+                            <p>Stobi Wines.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <a href="/Home/VinoActionTikves">
+                        <img src="~/Content/pictures/Bovin.png" alt="Bovin" width="200px" height="200px" />
+                        <div class="caption">
+                            <p>Bovin Wines.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+
+                        <button type="button" class="btn btn-dark" onclick=" location.href='/TipVino/TipAction'" >TipVino</button>
+                    <button type="button" class="btn btn-dark" onclick=" location.href='/Sostojki/Index'" >Sostojki Vino</button>
+                    <button type="button" class="btn btn-dark" onclick=" location.href='/Kolicina/KolicinaAction'">Kolicina Vino</button>
+                    <button type="button" class="btn btn-dark" onclick=" location.href='/Vino/VinoAction'">Vino</button>
+
+        <div class="row">
         <table>
             <tr>
                 <th>Ime Vino</th>
@@ -25,5 +72,6 @@
 
         </table>
     </div>
+        -->
 </body>
 </html>
