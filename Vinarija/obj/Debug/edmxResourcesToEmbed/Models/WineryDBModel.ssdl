@@ -12,7 +12,7 @@
     <Key>
       <PropertyRef Name="KupuvacID" />
     </Key>
-    <Property Name="KupuvacID" Type="int" Nullable="false" />
+    <Property Name="KupuvacID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Ime" Type="nvarchar" MaxLength="20" />
     <Property Name="Prezime" Type="nvarchar" MaxLength="20" />
     <Property Name="email" Type="nvarchar" MaxLength="20" />

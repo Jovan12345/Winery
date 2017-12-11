@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,7 +23,7 @@ namespace Vinarija.Controllers
         [HttpPost]
         public ViewResult RegistrationForm(Kupuvac registration)
         {
-            return View("Congratualation", registration);
+            return View("Congratulation", registration);
         }
     }
 }

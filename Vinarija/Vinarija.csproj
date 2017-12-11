@@ -207,6 +207,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProizvoditeliController.cs" />
     <Compile Include="Controllers\SostojkiController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TipVinoController.cs" />
     <Compile Include="Controllers\VinoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -353,9 +354,13 @@
     <Content Include="Views\Kolicina\KolicinaAction.cshtml" />
     <Content Include="Views\Vino\VinoAction.cshtml" />
     <Content Include="Views\Home\VinoActionTikves.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Home\VinoActionBovin.cshtml" />
+    <Content Include="Views\Home\VinoActionDalvina.cshtml" />
+    <Content Include="Views\Home\VinoActionStobi.cshtml" />
     <Content Include="Views\Korisnici\Index.cshtml" />
     <Content Include="Views\Korisnici\RegistrationForm.cshtml" />
-    <Content Include="Views\Korisnici\Congratualation.cshtml" />
+    <Content Include="Views\Korisnici\Congratulation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

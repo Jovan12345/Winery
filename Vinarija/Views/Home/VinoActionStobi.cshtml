@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>
-        Vino Tikves
+        Vino Stobi
     </title>
 </head>
 <body>
@@ -12,24 +12,20 @@
     <div class="row">
         @foreach (var obj in ViewData.Model)
         {
-            if (obj.ProizvoditelVino.ProizvoditelVinoIme == "Tikves")
+            if (obj.ProizvoditelVino.ProizvoditelVinoIme == "Stobi")
             {
 
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href="/Proizvoditeli/ProzivoditelAction">
-                            @if (@obj.ImeVino == "Tikves Crveno")
-    {
-                        <img src="~/Content/pictures/tikvesalexandria.jpg" alt="Tikves Red" width="200px" height="200px" />
-}
-else if (@obj.ImeVino == "Tikves Crno")
-{
-                        <img src="~/Content/pictures/kratosija.jpg" alt="Tikves Black" width="200px" height="200px" />
-}
-else if (@obj.ImeVino == "Tikves Belo")
-{
-                        <img src="~/Content/pictures/tikvesalexandria1.jpg" alt="Tikves Belo" width="200px" height="200px" />
-}
+                            @if (@obj.ImeVino == "Stobi Roze")
+                            {
+                                <img src="~/Content/pictures/s.jpg" alt="Stobi Roze" width="200px" height="200px" />
+                            }
+                            else if (@obj.ImeVino == "Stobi Belo")
+                            {
+                                <img src="~/Content/pictures/s1.jpg" alt="Stobi Belo" width="200px" height="200px" />
+                            }
                             <div class="caption">
                                 <p>@obj.ImeVino</p>
                             </div>

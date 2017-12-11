@@ -45,6 +45,23 @@ namespace Vinarija.Controllers
                             select b);
             return View();
         }
-
+        public ActionResult VinoActionBovin()
+        {
+            ViewData.Model = wEntities.Vinoes.ToList();
+            var obj = (from b in wEntities.Vinoes select b);
+            return View();
+        }
+        public ActionResult VinoActionDalvina()
+        {
+            ViewData.Model = wEntities.Vinoes.ToList();
+            var obj = (from b in wEntities.Vinoes select b);
+            return View();
+        }
+        public ActionResult VinoActionStobi()
+        {
+            ViewData.Model = wEntities.Vinoes.ToList();
+            var obj = (from b in wEntities.Vinoes select b);
+            return View();
+        }
     }
 }
