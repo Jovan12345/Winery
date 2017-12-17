@@ -204,10 +204,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KolicinaController.cs" />
     <Compile Include="Controllers\KorisniciController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NarackaController.cs" />
     <Compile Include="Controllers\ProizvoditeliController.cs" />
     <Compile Include="Controllers\SostojkiController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\RegistracijaController.cs" />
     <Compile Include="Controllers\TipVinoController.cs" />
     <Compile Include="Controllers\VinoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -235,6 +237,9 @@
       <DependentUpon>WineryDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipVino.cs">
+      <DependentUpon>WineryDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserProfile.cs">
       <DependentUpon>WineryDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vino.cs">
@@ -354,18 +359,23 @@
     <Content Include="Views\Kolicina\KolicinaAction.cshtml" />
     <Content Include="Views\Vino\VinoAction.cshtml" />
     <Content Include="Views\Home\VinoActionTikves.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Home\VinoActionBovin.cshtml" />
     <Content Include="Views\Home\VinoActionDalvina.cshtml" />
     <Content Include="Views\Home\VinoActionStobi.cshtml" />
     <Content Include="Views\Korisnici\Index.cshtml" />
     <Content Include="Views\Korisnici\RegistrationForm.cshtml" />
     <Content Include="Views\Korisnici\Congratulation.cshtml" />
+    <Content Include="Views\Registracija\Index.cshtml" />
+    <Content Include="Views\Naracka\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\UserDashBoard.cshtml" />
+    <Content Include="Views\Sostojki\IndexDalvina.cshtml" />
+    <Content Include="Views\Sostojki\IndexStobi.cshtml" />
+    <Content Include="Views\Sostojki\IndexTikves.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\pictures\" />
-    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

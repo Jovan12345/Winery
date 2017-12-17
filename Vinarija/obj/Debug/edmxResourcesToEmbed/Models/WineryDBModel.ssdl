@@ -12,21 +12,25 @@
     <Key>
       <PropertyRef Name="KupuvacID" />
     </Key>
-    <Property Name="KupuvacID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KupuvacID" Type="int" Nullable="false" />
     <Property Name="Ime" Type="nvarchar" MaxLength="20" />
     <Property Name="Prezime" Type="nvarchar" MaxLength="20" />
     <Property Name="email" Type="nvarchar" MaxLength="20" />
     <Property Name="adresa" Type="nvarchar" MaxLength="20" />
     <Property Name="Godini" Type="int" />
     <Property Name="tel" Type="int" />
+    <Property Name="pass" Type="nvarchar" MaxLength="50" />
+    <Property Name="username" Type="nvarchar" MaxLength="15" />
+    <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="Naracka">
     <Key>
       <PropertyRef Name="NarackaID" />
     </Key>
-    <Property Name="NarackaID" Type="int" Nullable="false" />
+    <Property Name="NarackaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="KupuvacID" Type="int" />
     <Property Name="VinoID" Type="int" />
+    <Property Name="Kolicina" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ProizvoditelVino">
     <Key>
@@ -62,6 +66,15 @@
     </Key>
     <Property Name="TipVinoID" Type="int" Nullable="false" />
     <Property Name="TipVino" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="Vino">
     <Key>
@@ -154,6 +167,7 @@
     <EntitySet Name="SostojkiVino" EntityType="Self.SostojkiVino" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipVino" EntityType="Self.TipVino" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vino" EntityType="Self.Vino" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_KolicinaVino_Vino" Association="Self.FK_KolicinaVino_Vino">
       <End Role="Vino" EntitySet="Vino" />

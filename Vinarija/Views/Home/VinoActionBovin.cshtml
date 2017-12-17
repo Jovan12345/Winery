@@ -6,35 +6,51 @@
     <title>
         Vino Bovin
     </title>
+    <style>
+        #myImg {
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+            #myImg:hover {
+                opacity: 0.7;
+                transform: scale(1.5);
+            }
+    </style>
 </head>
 <body>
-    <a href="/Home/Index" class="btn btn-default">Home</a>
+    <div class="row">
+        <div class="col-md-3">
+                <h3>Bovin Vina</h3>
+        </div>
+    </div>
     <div class="row">
         @foreach (var obj in ViewData.Model)
         {
             if (obj.ProizvoditelVino.ProizvoditelVinoIme == "Bovin")
             {
-
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <a href="/Proizvoditeli/ProzivoditelAction">
-                            @if (@obj.ImeVino == "Bovin Crveno")
-                            {
-                                <img src="~/Content/pictures/bovinvranec.jpeg" alt="Bovin Red" width="200px" height="200px" />
-                            }
-                            else if (@obj.ImeVino == "Bovin Crno")
-                            {
-                                <img src="~/Content/pictures/bovinmerlot.jpeg" alt="Bovin Black" width="200px" height="200px" />
-                            }
-                            <div class="caption">
-                                <p>@obj.ImeVino</p>
-                            </div>
-                        </a>
+                        @if (@obj.ImeVino == "Bovin Crveno")
+                        {
+                            <img id="myImg" src="~/Content/pictures/bovinvranec.jpeg" alt="Bovin Red" width="200px" height="200px" />
+                        }
+                        else if (@obj.ImeVino == "Bovin Crno")
+                        {
+                            <img id="myImg" src="~/Content/pictures/bovinmerlot.jpeg" alt="Bovin Black" width="200px" height="200px" />
+                        }
+                        <div class="caption">
+                            <p>@obj.ImeVino</p>
+                        </div>
                     </div>
                 </div>
-
             }
         }
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+                <a class="btn btn-default" href="/Sostojki/Index">Sostojki</a>
+            
+        </div>
     </div>
 </body>
 </html>

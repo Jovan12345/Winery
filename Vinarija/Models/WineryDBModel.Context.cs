@@ -33,5 +33,6 @@ namespace Vinarija.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TipVino> TipVinoes { get; set; }
         public virtual DbSet<Vino> Vinoes { get; set; }
+        public virtual DbSet<UserProfile> UserProfiles { get; set; }
     }
 }

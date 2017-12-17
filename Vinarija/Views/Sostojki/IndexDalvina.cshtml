@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "SostojkiTitle";
+}
+<html>
+<head>
+    <title>
+        Sostojki
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="row">
+        <h1>Sostojki</h1>
+    </div>
+    <br />
+    <div class="row">
+        <div class="thumbnail">
+            <table id="ecample" class="table table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>Tip Vino</th>
+                        <th>Seker</th>
+                        <th>Grozje</th>
+                        <th>Voda</th>
+                        <th>Ostanato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in ViewData.Model)
+                    {
+                        if (obj.Vino.ProizvoditelVinoID == 13)
+                        {
+                            <tr>
+                                <td>@obj.Vino.ImeVino</td>
+                                <td>@obj.Seker</td>
+                                <td>@obj.Grozje</td>
+                                <td>@obj.Voda</td>
+                                <td>@obj.Ostanato</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <p>Vratetese na <a href="/Home/VinoActionDalvina">prethodnata</a> strana</p>
+    </div>
+    <div class="row">
+        <p>Vratetese na <a href="/Home/Index">pocetnata</a> strana</p>
+    </div>
+</body>
+</html>
+

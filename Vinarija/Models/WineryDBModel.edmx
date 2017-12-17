@@ -17,21 +17,25 @@
           <Key>
             <PropertyRef Name="KupuvacID" />
           </Key>
-          <Property Name="KupuvacID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KupuvacID" Type="int" Nullable="false" />
           <Property Name="Ime" Type="nvarchar" MaxLength="20" />
           <Property Name="Prezime" Type="nvarchar" MaxLength="20" />
           <Property Name="email" Type="nvarchar" MaxLength="20" />
           <Property Name="adresa" Type="nvarchar" MaxLength="20" />
           <Property Name="Godini" Type="int" />
           <Property Name="tel" Type="int" />
+          <Property Name="pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="15" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="Naracka">
           <Key>
             <PropertyRef Name="NarackaID" />
           </Key>
-          <Property Name="NarackaID" Type="int" Nullable="false" />
+          <Property Name="NarackaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KupuvacID" Type="int" />
           <Property Name="VinoID" Type="int" />
+          <Property Name="Kolicina" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ProizvoditelVino">
           <Key>
@@ -67,6 +71,15 @@
           </Key>
           <Property Name="TipVinoID" Type="int" Nullable="false" />
           <Property Name="TipVino" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="Vino">
           <Key>
@@ -159,6 +172,7 @@
           <EntitySet Name="SostojkiVino" EntityType="Self.SostojkiVino" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipVino" EntityType="Self.TipVino" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vino" EntityType="Self.Vino" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_KolicinaVino_Vino" Association="Self.FK_KolicinaVino_Vino">
             <End Role="Vino" EntitySet="Vino" />
@@ -210,6 +224,9 @@
           <Property Name="Godini" Type="Int32" />
           <Property Name="tel" Type="Int32" />
           <NavigationProperty Name="Narackas" Relationship="Self.FK_Naracka_Kupuvac" FromRole="Kupuvac" ToRole="Naracka" />
+          <Property Name="pass" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="username" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="Naracka">
           <Key>
@@ -220,6 +237,7 @@
           <Property Name="VinoID" Type="Int32" />
           <NavigationProperty Name="Kupuvac" Relationship="Self.FK_Naracka_Kupuvac" FromRole="Naracka" ToRole="Kupuvac" />
           <NavigationProperty Name="Vino" Relationship="Self.FK_Naracka_Vino" FromRole="Naracka" ToRole="Vino" />
+          <Property Name="Kolicina" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ProizvoditelVino">
           <Key>
@@ -380,7 +398,17 @@
             <End Role="TipVino" EntitySet="TipVinoes" />
             <End Role="Vino" EntitySet="Vinoes" />
           </AssociationSet>
+          <EntitySet Name="UserProfiles" EntityType="WineryDBModel.UserProfile" />
         </EntityContainer>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -399,6 +427,9 @@
           <EntitySetMapping Name="Kupuvacs">
             <EntityTypeMapping TypeName="WineryDBModel.Kupuvac">
               <MappingFragment StoreEntitySet="Kupuvac">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
                 <ScalarProperty Name="KupuvacID" ColumnName="KupuvacID" />
                 <ScalarProperty Name="Ime" ColumnName="Ime" />
                 <ScalarProperty Name="Prezime" ColumnName="Prezime" />
@@ -412,6 +443,7 @@
           <EntitySetMapping Name="Narackas">
             <EntityTypeMapping TypeName="WineryDBModel.Naracka">
               <MappingFragment StoreEntitySet="Naracka">
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
                 <ScalarProperty Name="NarackaID" ColumnName="NarackaID" />
                 <ScalarProperty Name="KupuvacID" ColumnName="KupuvacID" />
                 <ScalarProperty Name="VinoID" ColumnName="VinoID" />
@@ -466,6 +498,16 @@
                 <ScalarProperty Name="ProizvoditelVinoID" ColumnName="ProizvoditelVinoID" />
                 <ScalarProperty Name="GodinaProizvdostvo" ColumnName="GodinaProizvdostvo" />
                 <ScalarProperty Name="Cena" ColumnName="Cena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="WineryDBModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

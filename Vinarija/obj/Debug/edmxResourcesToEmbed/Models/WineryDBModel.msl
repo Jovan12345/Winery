@@ -13,6 +13,9 @@
     <EntitySetMapping Name="Kupuvacs">
       <EntityTypeMapping TypeName="WineryDBModel.Kupuvac">
         <MappingFragment StoreEntitySet="Kupuvac">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
           <ScalarProperty Name="KupuvacID" ColumnName="KupuvacID" />
           <ScalarProperty Name="Ime" ColumnName="Ime" />
           <ScalarProperty Name="Prezime" ColumnName="Prezime" />
@@ -26,6 +29,7 @@
     <EntitySetMapping Name="Narackas">
       <EntityTypeMapping TypeName="WineryDBModel.Naracka">
         <MappingFragment StoreEntitySet="Naracka">
+          <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
           <ScalarProperty Name="NarackaID" ColumnName="NarackaID" />
           <ScalarProperty Name="KupuvacID" ColumnName="KupuvacID" />
           <ScalarProperty Name="VinoID" ColumnName="VinoID" />
@@ -80,6 +84,16 @@
           <ScalarProperty Name="ProizvoditelVinoID" ColumnName="ProizvoditelVinoID" />
           <ScalarProperty Name="GodinaProizvdostvo" ColumnName="GodinaProizvdostvo" />
           <ScalarProperty Name="Cena" ColumnName="Cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfiles">
+      <EntityTypeMapping TypeName="WineryDBModel.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

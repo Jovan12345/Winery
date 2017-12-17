@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="row">
+        @using (Html.BeginForm("SaveRecord", "Naracka", FormMethod.Post))
+        {
+            <select id="vino" name="vino">
+                @foreach (var c in ViewData.Model)
+                {
+                    <option value="@c.VinoID">@c.ImeVino</option>
+                }
+            </select>
+            <select id="kolicina" name="kolicina">
+
+                {
+                <option value="500">500</option>
+                <option value="750">750</option>
+                <option value="1000">1000</option>
+                }
+            </select>
+            <h1 id="naslov"></h1>
+            <input type="submit" value="Submit" class="btn btn-block btn-primary" />
+        }
+    </div>
+</body>
+</html>
+

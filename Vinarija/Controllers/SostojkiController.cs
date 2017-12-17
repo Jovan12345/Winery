@@ -27,5 +27,29 @@ namespace Vinarija.Controllers
                        select new { b.Grozje, b.Ostanato, b.Seker, b.Vino.ImeVino, b.Voda }).ToList();
             return View();
         }
+        public ActionResult IndexDalvina()
+        {
+            ViewData.Model = sostojkiEntities.SostojkiVinoes.ToList();
+
+            var obj = (from b in sostojkiEntities.SostojkiVinoes
+                       select new { b.Grozje, b.Ostanato, b.Seker, b.Vino.ImeVino, b.Voda }).ToList();
+            return View();
+        }
+        public ActionResult IndexStobi()
+        {
+            ViewData.Model = sostojkiEntities.SostojkiVinoes.ToList();
+
+            var obj = (from b in sostojkiEntities.SostojkiVinoes
+                       select new { b.Grozje, b.Ostanato, b.Seker, b.Vino.ImeVino, b.Voda }).ToList();
+            return View();
+        }
+        public ActionResult IndexTikves()
+        {
+            ViewData.Model = sostojkiEntities.SostojkiVinoes.ToList();
+
+            var obj = (from b in sostojkiEntities.SostojkiVinoes
+                       select new { b.Grozje, b.Ostanato, b.Seker, b.Vino.ImeVino, b.Voda }).ToList();
+            return View();
+        }
     }
 }

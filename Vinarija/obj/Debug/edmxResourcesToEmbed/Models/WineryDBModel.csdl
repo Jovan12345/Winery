@@ -21,6 +21,9 @@
     <Property Name="Godini" Type="Int32" />
     <Property Name="tel" Type="Int32" />
     <NavigationProperty Name="Narackas" Relationship="Self.FK_Naracka_Kupuvac" FromRole="Kupuvac" ToRole="Naracka" />
+    <Property Name="pass" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="username" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
   </EntityType>
   <EntityType Name="Naracka">
     <Key>
@@ -31,6 +34,7 @@
     <Property Name="VinoID" Type="Int32" />
     <NavigationProperty Name="Kupuvac" Relationship="Self.FK_Naracka_Kupuvac" FromRole="Naracka" ToRole="Kupuvac" />
     <NavigationProperty Name="Vino" Relationship="Self.FK_Naracka_Vino" FromRole="Naracka" ToRole="Vino" />
+    <Property Name="Kolicina" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ProizvoditelVino">
     <Key>
@@ -191,5 +195,15 @@
       <End Role="TipVino" EntitySet="TipVinoes" />
       <End Role="Vino" EntitySet="Vinoes" />
     </AssociationSet>
+    <EntitySet Name="UserProfiles" EntityType="WineryDBModel.UserProfile" />
   </EntityContainer>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
 </Schema>

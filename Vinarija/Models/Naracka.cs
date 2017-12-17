@@ -17,6 +17,7 @@ namespace Vinarija.Models
         public int NarackaID { get; set; }
         public Nullable<int> KupuvacID { get; set; }
         public Nullable<int> VinoID { get; set; }
+        public string Kolicina { get; set; }
     
         public virtual Kupuvac Kupuvac { get; set; }
         public virtual Vino Vino { get; set; }

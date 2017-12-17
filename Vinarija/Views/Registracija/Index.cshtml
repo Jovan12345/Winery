@@ -1,0 +1,34 @@
+﻿@model Vinarija.Models.Kupuvac
+
+@{
+    ViewBag.Title = "Registracija";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registracija</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>Registrirajte se</h1>
+            @using (Html.BeginForm("SaveRecord", "Registracija", FormMethod.Post))
+        {
+            <h6>Vnesete Ime:</h6>@Html.TextBoxFor(model => model.Ime, new { @class = "form-control", @placeholder = "Ime" })
+            <h6>Vnesete Prezime:</h6>@Html.TextBoxFor(model => model.Prezime, new { @class = "form-control", @placeholder = "Prezime" })
+            <h6>Vnesete Adresa:</h6>@Html.TextBoxFor(model => model.adresa, new { @class = "form-control", @placeholder = "Adresa" })
+            <h6>Vnesete Email adresa:</h6>@Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "Email" })
+            <h6>Vnesete Godini:</h6>@Html.TextBoxFor(model => model.Godini, new { @class = "form-control", @placeholder = "Godini" })
+            <h6>Vnesete Telefon:</h6>@Html.TextBoxFor(model => model.tel, new { @class = "form-control", @placeholder = "Telephone" })
+            <h6>Vnesete Password:</h6>@Html.TextBoxFor(model => model.pass, new { @class = "form-control", @placeholder = "Password",@type = "password" })
+            <h6>Vnesete Username:</h6>@Html.TextBoxFor(model => model.username, new { @class = "form-control", @placeholder = "Username" })
+            <h6></h6>
+            <input type="submit" value="Submit" class="btn btn-block btn-primary" />
+    }
+        </div>
+    </div>
+</body>
+</html>

@@ -24,11 +24,7 @@ namespace Vinarija.Controllers
         }
 
         public ActionResult About()
-        {
-            ViewBag.Message = "Proizvoditeli na klasno vino.";
-            ViewData.Model = wEntities.ProizvoditelVinoes.ToList();
-            ViewData.Model = (from w in wEntities.ProizvoditelVinoes select w.ProizvoditelVinoIme).ToList();
-
+        { 
             return View();
         }
 
