@@ -72,10 +72,10 @@ namespace Vinarija.Controllers
             {
                 return View(model);
             }
-
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+           
             switch (result)
             {
                 case SignInStatus.Success:
@@ -323,13 +323,19 @@ namespace Vinarija.Controllers
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+           
             if (loginInfo == null)
             {
                 return RedirectToAction("Login");
             }
+            Session["UserName"] = loginInfo.DefaultUserName.ToString();
+
+            Int32 userId = Int32.Parse(loginInfo.Login.ProviderKey.Substring(0, 3));
+            Session["userID"] = userId;
 
             // Sign in the user with this external login provider if the user already has a login
             var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+           
             switch (result)
             {
                 case SignInStatus.Success:
@@ -363,6 +369,7 @@ namespace Vinarija.Controllers
             {
                 // Get the information about the user from the external login provider
                 var info = await AuthenticationManager.GetExternalLoginInfoAsync();
+
                 if (info == null)
                 {
                     return View("ExternalLoginFailure");

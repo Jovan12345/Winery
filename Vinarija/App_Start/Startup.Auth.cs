@@ -58,11 +58,11 @@ namespace Vinarija
               // appId: "",
                //appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+           app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+           {
+               ClientId = "282567329190-qr5m8jubek06mc661kvtnvnpa8ljuu4d.apps.googleusercontent.com",
+               ClientSecret = "J2P-borA8sPxbT27SzeOiaHQ"
+           });
         }
     }
 }

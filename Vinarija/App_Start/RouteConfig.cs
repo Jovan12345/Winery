@@ -16,19 +16,8 @@ namespace Vinarija
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Login", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
             );
-
-            routes.MapRoute(
-              name: "ProizvoditelImeRoute",
-              url: "{controller}/{action}/{id}",
-              defaults: new { controller = "Proizvoditeli", action = "ProizvoditelAction", id ='1' }
-          );
-            routes.MapRoute(
-              name: "SostojkiRoute",
-              url: "{controller}/{action}/{id}",
-              defaults: new { controller = "Sostojki", action = "Index", id = '2' }
-          );
         }
     }
 }

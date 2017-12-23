@@ -22,16 +22,29 @@ namespace Vinarija.Controllers
                        select new {b.VinoID, b.ImeVino}).ToList();
             return View();
         }
-        public ActionResult SaveRecord(int vino, string kolicina)
+        public ActionResult SaveRecord(int vino, string kolicina, int userID, string username)
         {
+            WineryDBEntities db = new WineryDBEntities();
+
+            var query = (from k in db.Kupuvacs where k.KupuvacID == userID select k);
+            if (query == null)
+            {
+                Kupuvac kup = new Kupuvac();
+                kup.username = username;
+                kup.KupuvacID = userID;
+
+                db.Kupuvacs.Add(kup);
+                db.SaveChanges();
+            }
+
             try
             {
-                WineryDBEntities db = new WineryDBEntities();
+               
                 
                 Naracka naracka = new Naracka();
                 naracka.VinoID = vino;
                 naracka.Kolicina = kolicina;
-
+                naracka.KupuvacID = userID;
 
                 db.Narackas.Add(naracka);
                 db.SaveChanges();

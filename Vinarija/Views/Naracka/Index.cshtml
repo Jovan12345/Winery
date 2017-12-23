@@ -1,35 +1,111 @@
 ﻿@{
     ViewBag.Title = "Index";
-    Layout = null;
 }
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+        input[type=text], select {
+            width: 250px;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 250px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="row">
-        @using (Html.BeginForm("SaveRecord", "Naracka", FormMethod.Post))
-        {
-            <select id="vino" name="vino">
-                @foreach (var c in ViewData.Model)
-                {
-                    <option value="@c.VinoID">@c.ImeVino</option>
-                }
-            </select>
-            <select id="kolicina" name="kolicina">
-
-                {
-                <option value="500">500</option>
-                <option value="750">750</option>
-                <option value="1000">1000</option>
-                }
-            </select>
-            <h1 id="naslov"></h1>
-            <input type="submit" value="Submit" class="btn btn-block btn-primary" />
-        }
+        <div class="jumbotron jumbotron-billboard">
+            <h2>Naracka</h2>
+        </div>
     </div>
-</body>
+
+    @using (Html.BeginForm("SaveRecord", "Naracka", FormMethod.Post, new { name = "formNaracka", id = "formNaracka" }))
+    {<div class="row">
+
+    <div class="col-md-3">
+        <select id="vino" name="vino">
+            @foreach (var c in ViewData.Model)
+            {
+                <h6>Izberete Vino:</h6>
+                <option value="@c.VinoID">@c.ImeVino</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-3">
+        <select id="kolicina" name="kolicina">
+            {
+            <option value="500">500 ml.</option>
+            <option value="750">750 ml.</option>
+            <option value="1000">1000 ml.</option>
+            }
+        </select>
+    </div>
+    <select style="display:none" id="userID" name="userID">
+        {
+        <option value="@Session["userID"]">@Session["userID"]</option>
+
+        }
+    </select>
+    <select style="display:none" id="username" name="username">
+        {
+        <option value="@Session["UserName"]">@Session["UserName"]</option>
+
+        }
+    </select>
+
+</div>
+     <div class="row">
+         <input type="submit" value="Order" class="btn btn-block btn-primary" />
+     </div>
+            }
+     <script>
+      var log = sessionStorage.getItem('UserName');
+                    if (document.getElementById("menuRightLogin") && log != null) {
+                        $("#menuRightLogin").remove();
+                        $("#menuRightLogoff").remove();
+                            var html = '<ul id="menuRightLogoff" class="nav navbar-nav navbar-right">' +
+                                '<li>@Html.ActionLink("Naracka", "Index", "Naracka", routeValues: null, htmlAttributes: new { id = "registracijaLink" })</li>' +
+                                '<li><a id="logOff" href="/Account/Login">Log off</a></li>' +
+                                '</ul>';
+
+
+                        $('body > div.navbar.navbar-inverse.navbar-fixed-top > div > div.navbar-collapse.collapse').append(html);
+                        $('#logOff').click(function () { sessionStorage.clear();});
+                    } else {
+                        $("#menuRightLogin").remove();
+                        $("#menuRightLogoff").remove();
+                        $("#formNaracka").submit(function (event) {
+                            event.preventDefault();
+                        });
+                             var html = '<ul id="menuRightLogin" class="nav navbar-nav navbar-right">' +
+                                '<li>@Html.ActionLink("Naracka", "Index", "Naracka", routeValues: null, htmlAttributes: new { id = "registracijaLink" })</li>' +
+                                '<li>@Html.ActionLink("Registracija", "Index", "Registracija", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>' +
+                                '<li>@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>' +
+                                '</ul>';
+                            $('body > div.navbar.navbar-inverse.navbar-fixed-top > div > div.navbar-collapse.collapse').append(html);
+
+                        }
+
+     </script>
+    </body>
 </html>
 

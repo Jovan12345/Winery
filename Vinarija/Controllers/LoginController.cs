@@ -23,7 +23,6 @@ namespace Vinarija.Controllers
                 using (WineryDBEntities db = new WineryDBEntities())
                 {
                     var obj = db.Kupuvacs.Where(a => a.username.Equals(objUser.username) && a.pass.Equals(objUser.pass)).FirstOrDefault();
-                    //var obj = (from a in db.Kupuvacs where a.username==objUser.username && a.pass==objUser.pass select new {a.KupuvacID,a.username });
                     if (obj != null)
                     {
                         Session["UserID"] = obj.KupuvacID.ToString();

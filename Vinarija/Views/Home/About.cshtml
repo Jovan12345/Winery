@@ -3,6 +3,8 @@
 
 }<html>
  <head>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
  </head>
  <body>
      <div class="container">
@@ -72,16 +74,43 @@
          </div>
      </div>
 
-         <div class="container">
-             <div class="panel panel-default">
-                 <div class="panel-heading">
-                     Purpose
-                 </div>
-                 <div class="panel panel-body">
-                     Wineries typically employ winemakers to produce various wines from grapes by following the winemaking process. This process involves the fermentation of fruit, as well as blending and aging of the juice. The grapes may be from vineyards owned by the winery or may be brought in from other locations. Many wineries also give tours and have cellar doors or tasting rooms where customers can taste wines before they make a purchase. Winery architecture is very varied and rich and it is used by wineries as a way to promote their wines and cellar doors.
-                 </div>
+     <div class="container">
+         <div class="panel panel-default">
+             <div class="panel-heading">
+                 Purpose
+             </div>
+             <div class="panel panel-body">
+                 Wineries typically employ winemakers to produce various wines from grapes by following the winemaking process. This process involves the fermentation of fruit, as well as blending and aging of the juice. The grapes may be from vineyards owned by the winery or may be brought in from other locations. Many wineries also give tours and have cellar doors or tasting rooms where customers can taste wines before they make a purchase. Winery architecture is very varied and rich and it is used by wineries as a way to promote their wines and cellar doors.
              </div>
          </div>
+     </div>
+     <script>
+      var log = sessionStorage.getItem('UserName');
+                    if (document.getElementById("menuRightLogin") && log != null) {
+                        $("#menuRightLogin").remove();
+                        $("#menuRightLogoff").remove();
+                            var html = '<ul id="menuRightLogoff" class="nav navbar-nav navbar-right">' +
+                                '<li>@Html.ActionLink("Naracka", "Index", "Naracka", routeValues: null, htmlAttributes: new { id = "registracijaLink" })</li>' +
+                                '<li><a id="logOff" href="/Account/Login">Log off</a></li>' +
+                                '</ul>';
 
+
+                        $('body > div.navbar.navbar-inverse.navbar-fixed-top > div > div.navbar-collapse.collapse').append(html);
+                        $('#logOff').click(function () { sessionStorage.clear();});
+                    } else {
+                        $("#menuRightLogin").remove();
+                        $("#menuRightLogoff").remove();
+                        $("#formNaracka").submit(function (event) {
+                            event.preventDefault();
+                        });
+                             var html = '<ul id="menuRightLogin" class="nav navbar-nav navbar-right">' +
+                                '<li>@Html.ActionLink("Naracka", "Index", "Naracka", routeValues: null, htmlAttributes: new { id = "registracijaLink" })</li>' +
+                                '<li>@Html.ActionLink("Registracija", "Index", "Registracija", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>' +
+                                '<li>@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>' +
+                                '</ul>';
+                            $('body > div.navbar.navbar-inverse.navbar-fixed-top > div > div.navbar-collapse.collapse').append(html);
+
+                        }
+     </script>
  </body>
 </html>

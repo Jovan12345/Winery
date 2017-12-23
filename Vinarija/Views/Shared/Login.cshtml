@@ -1,0 +1,45 @@
+﻿@model Vinarija.Models.Kupuvac
+
+    @{
+        ViewBag.Title = "Login";
+    }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Login</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h1>Logirajte se</h1>
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+    {
+        <fieldset>
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @if (@ViewBag.Message != null)
+    {
+        <div style="border: 1px solid red">
+            @ViewBag.Message
+        </div>
+}
+
+                    <h6>Vnesete korisnicko ime:</h6>
+                    @Html.TextBoxFor(a => a.username, new { @class = "form-control", @placeholder = "Korisnicko Ime",requred=true })
+                    @Html.ValidationMessageFor(a => a.username)
+                    <h6>Vnesete password:</h6>
+                    @Html.PasswordFor(a => a.pass, new { @class = "form-control", @placeholder = "Password", requred = true })
+                    @Html.ValidationMessageFor(a => a.pass)
+       <h6></h6>
+                        <input type="submit" value="Login" class="btn btn-block btn-primary" />
+                        <h6>Nemate korisnik ?  <a href="/Registracija/Index">Kreirajte korisnik</a></h6>
+                  
+        </fieldset>
+}
+        </div>
+    </div>
+</body>
+
+</html>
