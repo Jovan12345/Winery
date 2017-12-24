@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <style>
         input[type=text], select {
             width: 250px;
@@ -39,50 +38,52 @@
     </div>
 
     @using (Html.BeginForm("SaveRecord", "Naracka", FormMethod.Post, new { name = "formNaracka", id = "formNaracka" }))
-    {<div class="row">
+    {
+        <div class="row">
+            <div class="col-md-3">
+                <select id="vino" name="vino">
+                    @foreach (var c in ViewData.Model)
+                    {
+                        <h6>Izberete Vino:</h6>
+                        <option value="@c.VinoID">@c.ImeVino</option>
+                    }
+                </select>
+            </div>
 
-    <div class="col-md-3">
-        <select id="vino" name="vino">
-            @foreach (var c in ViewData.Model)
-            {
-                <h6>Izberete Vino:</h6>
-                <option value="@c.VinoID">@c.ImeVino</option>
-            }
-        </select>
-    </div>
-    <div class="col-md-3">
-        <select id="kolicina" name="kolicina">
-            {
-            <option value="500">500 ml.</option>
-            <option value="750">750 ml.</option>
-            <option value="1000">1000 ml.</option>
-            }
-        </select>
-    </div>
-    <select style="display:none" id="userID" name="userID">
-        {
-        <option value="@Session["userID"]">@Session["userID"]</option>
+            <div class="col-md-3">
+                <select id="kolicina" name="kolicina">
+                    {
+                    <option value="500">500 ml.</option>
+                    <option value="750">750 ml.</option>
+                    <option value="1000">1000 ml.</option>
+                    }
+                </select>
+            </div>
 
-        }
-    </select>
-    <select style="display:none" id="username" name="username">
-        {
-        <option value="@Session["UserName"]">@Session["UserName"]</option>
+            <select style="display:none" id="userID" name="userID">
+                {
+                <option value="@Session["userID"]">@Session["userID"]</option>
+                }
+            </select>
 
-        }
-    </select>
+            <select style="display:none" id="username" name="username">
+                {
+                <option value="@Session["UserName"]">@Session["UserName"]</option>
+                }
+            </select>
 
-</div>
-     <div class="row">
-         <input type="submit" value="Order" class="btn btn-block btn-primary" />
-     </div>
-            }
-     <script>
+        </div>
+        <div class="row">
+            <input type="submit" value="Order" class="btn btn-block btn-primary" />
+        </div>
+    }
+    <script>
       var log = sessionStorage.getItem('UserName');
                     if (document.getElementById("menuRightLogin") && log != null) {
                         $("#menuRightLogin").remove();
                         $("#menuRightLogoff").remove();
-                            var html = '<ul id="menuRightLogoff" class="nav navbar-nav navbar-right">' +
+                        var html = '<ul id="menuRightLogoff" class="nav navbar-nav navbar-right">' +
+                            '<li><a> ' + log + '</a> </li>' +
                                 '<li>@Html.ActionLink("Naracka", "Index", "Naracka", routeValues: null, htmlAttributes: new { id = "registracijaLink" })</li>' +
                                 '<li><a id="logOff" href="/Account/Login">Log off</a></li>' +
                                 '</ul>';
@@ -105,7 +106,7 @@
 
                         }
 
-     </script>
-    </body>
+    </script>
+</body>
 </html>
 

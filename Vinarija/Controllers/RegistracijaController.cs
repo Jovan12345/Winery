@@ -39,7 +39,7 @@ namespace Vinarija.Controllers
                 throw ex;
             }
            
-           return RedirectToAction("Index","Home");
+           return RedirectToAction("Login","Account");
         }
     }
 }

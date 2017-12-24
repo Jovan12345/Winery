@@ -5,7 +5,6 @@
 }
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<h2>@ViewBag.Title.</h2>
 <div class="row">
     <div class="col-md-8">
         @RenderPage("~/Views/Shared/Login.cshtml")
@@ -21,10 +20,11 @@
                     if (document.getElementById("menuRightLogin") && log != null) {
                         $("#menuRightLogin").remove();
                         $("#menuRightLogoff").remove();
-                            var html = '<ul id="menuRightLogoff" class="nav navbar-nav navbar-right">' +
-                                '<li>@Html.ActionLink("Naracka", "Index", "Naracka", routeValues: null, htmlAttributes: new { id = "registracijaLink" })</li>' +
-                                '<li><a id="logOff" href="/Account/Login">Log off</a></li>' +
-                                '</ul>';
+                        var html = '<ul id="menuRightLogoff" class="nav navbar-nav navbar-right">' +
+                            '<li><a> ' + log + '</a> </li>' +
+                            '<li>@Html.ActionLink("Naracka", "Index", "Naracka", routeValues: null, htmlAttributes: new { id = "registracijaLink" })</li>' +
+                            '<li><a id="logOff" href="/Account/Login">Log off</a></li>' +
+                            '</ul>';
 
 
                         $('body > div.navbar.navbar-inverse.navbar-fixed-top > div > div.navbar-collapse.collapse').append(html);

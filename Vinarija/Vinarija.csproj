@@ -208,7 +208,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KolicinaController.cs" />
-    <Compile Include="Controllers\KorisniciController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NarackaController.cs" />
@@ -369,9 +368,6 @@
     <Content Include="Views\Home\VinoActionBovin.cshtml" />
     <Content Include="Views\Home\VinoActionDalvina.cshtml" />
     <Content Include="Views\Home\VinoActionStobi.cshtml" />
-    <Content Include="Views\Korisnici\Index.cshtml" />
-    <Content Include="Views\Korisnici\RegistrationForm.cshtml" />
-    <Content Include="Views\Korisnici\Congratulation.cshtml" />
     <Content Include="Views\Registracija\Index.cshtml" />
     <Content Include="Views\Naracka\Index.cshtml" />
     <Content Include="Views\Shared\Login.cshtml" />

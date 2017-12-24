@@ -41,7 +41,8 @@ var log = sessionStorage.getItem('UserName');
                     if (document.getElementById("menuRightLogin") && log != null) {
                         $("#menuRightLogin").remove();
                         $("#menuRightLogoff").remove();
-                            var html = '<ul id="menuRightLogoff" class="nav navbar-nav navbar-right">' +
+                        var html = '<ul id="menuRightLogoff" class="nav navbar-nav navbar-right">' +
+                            '<li><a> ' + log + '</a> </li>' +
                                 '<li>@Html.ActionLink("Naracka", "Index", "Naracka", routeValues: null, htmlAttributes: new { id = "registracijaLink" })</li>' +
                                 '<li><a id="logOff" href="/Account/Login">Log off</a></li>' +
                                 '</ul>';
